@@ -42,7 +42,7 @@ public class Sinaleira extends JFrame{
 		return verde;
 	}
 
-	public void setIconeVerde( ImageIcon icone ) {
+	public void setVerde( ImageIcon icone ) {
 		this.verde.setIcon(icone);
 	}
 	
@@ -94,15 +94,27 @@ public class Sinaleira extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				BackendDaSinaleira acao = new BackendDaSinaleira(Sinaleira.this);
-				acao.start();
+				
+					if( ligada == false ){
+						acao.start();
+						ligada = true;
+						start.setText( "PARAR" );
+						
+					}
+					else{
+						acao.stop();
+						ligada = false;
+						start.setText( "LIGAR" );
+					}
+				
+				
 			}
 		});
 		
 		linha += 60 + pulaLinha;
 		
-		start.setBounds( 50, linha, 100, 30);
+		start.setBounds( 35, linha, 100, 30);
 		container.add(start);
-		
 		
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setVisible( true );
