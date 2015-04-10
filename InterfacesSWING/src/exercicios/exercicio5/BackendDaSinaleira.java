@@ -28,8 +28,8 @@ public class BackendDaSinaleira extends Thread{
 		try {
 			sleep( 1000 );
 		} catch (InterruptedException e) {
-			JOptionPane.showMessageDialog( null, "A Sinaleira parou!" );
-			e.printStackTrace();
+			//JOptionPane.showMessageDialog( null, "A Sinaleira parou!" );
+			//e.printStackTrace();
 		}
 		
 		sinaleira.setVerde( VerdeDesligado );
@@ -38,8 +38,8 @@ public class BackendDaSinaleira extends Thread{
 		try {
 			sleep( 1000 );
 		} catch (InterruptedException e) {
-			JOptionPane.showMessageDialog( null, "A sinaleira parou!" );
-			e.printStackTrace();
+			//JOptionPane.showMessageDialog( null, "A sinaleira parou!" );
+			//e.printStackTrace();
 		}
 		
 		sinaleira.setAmarelo( AmareloDesligado );
@@ -48,8 +48,8 @@ public class BackendDaSinaleira extends Thread{
 		try {
 			sleep( 1000 );
 		} catch (InterruptedException e) {
-			JOptionPane.showMessageDialog( null, "A sinaleira parou!" );
-			e.printStackTrace();
+			//JOptionPane.showMessageDialog( null, "A sinaleira parou!" );
+			//e.printStackTrace();
 		}
 		
 		sinaleira.setVermelho( VermelhoDesligado );

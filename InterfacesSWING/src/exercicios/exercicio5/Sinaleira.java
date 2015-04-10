@@ -19,8 +19,11 @@ public class Sinaleira extends JFrame{
 	private JLabel verde;
 	private JButton start;
 	private boolean ligada = false;
+	BackendDaSinaleira acao;
 	
-	
+	ImageIcon amareloDesligado = new ImageIcon( getClass().getResource( "/imagens/AmareloDesLigado.png" ) );
+	ImageIcon vermelhoDesligado = new ImageIcon( getClass().getResource( "/imagens/VermelhoDesLigado.png" ) );
+	ImageIcon verdeDesligado = new ImageIcon ( getClass().getResource( "/imagens/VerdeDesLigado.png" ) );
 	
 	public JLabel getVermelho() {
 		return vermelho;
@@ -60,7 +63,7 @@ public class Sinaleira extends JFrame{
 
 	public Sinaleira() {
 		
-		setBounds(100, 100, 190, 400);
+		setBounds(100, 100, 187, 350);
 		setLocationRelativeTo( null );
 		setLayout( null );
 		
@@ -68,7 +71,7 @@ public class Sinaleira extends JFrame{
 		
 		vermelho = new JLabel();
 		vermelho.setBounds(50, linha, 70, 60);
-		ImageIcon vermelhoDesligado = new ImageIcon( getClass().getResource( "/imagens/VermelhoDesLigado.png" ) );
+		
 		vermelho.setIcon( vermelhoDesligado );
 		container.add( vermelho );
 		
@@ -76,7 +79,7 @@ public class Sinaleira extends JFrame{
 		
 		amarelo = new JLabel();
 		amarelo.setBounds(50, linha, 70, 60);
-		ImageIcon amareloDesligado = new ImageIcon( getClass().getResource( "/imagens/AmareloDesLigado.png" ) );
+		
 		amarelo.setIcon( amareloDesligado );
 		container.add(amarelo);
 		
@@ -84,7 +87,7 @@ public class Sinaleira extends JFrame{
 		
 		verde = new JLabel();
 		verde.setBounds( 50, linha, 70, 60);
-		ImageIcon verdeDesligado = new ImageIcon ( getClass().getResource( "/imagens/VerdeDesLigado.png" ) );
+		
 		verde.setIcon( verdeDesligado );
 		container.add( verde );
 		
@@ -93,18 +96,23 @@ public class Sinaleira extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				BackendDaSinaleira acao = new BackendDaSinaleira(Sinaleira.this);
+				
 				
 					if( ligada == false ){
+						acao = new BackendDaSinaleira(Sinaleira.this);
 						acao.start();
 						ligada = true;
 						start.setText( "PARAR" );
 						
 					}
 					else{
+						acao.interrupt();
 						acao.stop();
 						ligada = false;
 						start.setText( "LIGAR" );
+						verde.setIcon( verdeDesligado );
+						vermelho.setIcon( vermelhoDesligado );
+						amarelo.setIcon( amareloDesligado );
 					}
 				
 				
